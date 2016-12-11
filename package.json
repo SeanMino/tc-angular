@@ -1,8 +1,12 @@
 {
   "name": "tc_angular",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A command line for generate angular framewroks",
   "main": "index.js",
+  "bin":{
+    "tc-angular": "./bin/tc-angular"
+
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
