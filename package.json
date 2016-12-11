@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tc-h5/tc-angular.git"
+    "url": "https://github.com/tc-h5/tc-angular.git"
   },
   "author": "yupeng",
   "license": "ISC",
