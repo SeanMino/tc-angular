@@ -1,0 +1,19 @@
+{
+  "name": "tc_angular",
+  "version": "1.0.0",
+  "description": "A command line for generate angular framewroks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tc-h5/tc-angular.git"
+  },
+  "author": "yupeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tc-h5/tc-angular/issues"
+  },
+  "homepage": "https://github.com/tc-h5/tc-angular#readme"
+}

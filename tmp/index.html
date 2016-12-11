@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="xianfeng">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <script src="../../lib/angular.min.js"></script>
+    <script src="../../lib/angular-ui-router.js"></script>
+    <script src="../../lib/angular-css.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div ui-view></div>
+    </div>
+    <ul>
+        <li>
+            <a ui-sref="home">首页</a>
+        </li>
+        <li>
+            <a ui-sref="store">闪送超市</a>
+        </li>
+        <li>
+            <a ui-sref="order">新鲜预定</a>
+        </li>
+        <li>
+            <a ui-sref="cart">购物车</a>
+        </li>
+        <li>
+            <a ui-sref="mine">我的</a>
+        </li>
+    </ul>
+    <script src="app.js"></script>
+    <script src="./modules/home/home.js"></script>
+</body>
+</html>
