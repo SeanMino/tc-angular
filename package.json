@@ -4,7 +4,7 @@
   "description": "A command line for generate angular framewroks",
   "main": "index.js",
   "bin":{
-    "tc-angular": "./bin/tc-angular"
+    "tc-angular": "./bin/tc_angular"
 
   },
   "scripts": {
