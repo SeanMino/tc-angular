@@ -2,11 +2,12 @@
 <html ng-app="xianfeng">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>123</title>
     <meta name="viewport" content="initial-scale=1.0">
-    <script src="../../lib/angular.min.js"></script>
-    <script src="../../lib/angular-ui-router.js"></script>
-    <script src="../../lib/angular-css.min.js"></script>
+    <!-- build:css styles/all.css -->
+    <link rel="stylesheet" type="text/css" href="styles/home.css">
+    <!-- endbuild-->
+   
 </head>
 <body>
     <div class="container">
@@ -29,7 +30,22 @@
             <a ui-sref="mine">我的</a>
         </li>
     </ul>
+
+   
+    <!-- build:js scripts/allinone.js -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../bower_components/angular-css/angular-css.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/scripts.js -->
     <script src="app.js"></script>
     <script src="./modules/home/home.js"></script>
+    <script src="./modules/store/store.js"></script>
+    <script src="./modules/mine/mine.js"></script>
+    <script src="./modules/order/order.js"></script>
+    <script src="./modules/cart/cart.js"></script>
+   
+    <!-- endbuild -->
 </body>
 </html>

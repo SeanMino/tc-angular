@@ -21,22 +21,20 @@ if (params.path) {
   createProject();
 }
 
-var appDist = 'app';
-
 /**
  * 创建项目
  * @return {[type]} [description]
  */
 function createProject(){
-  var projectpath = params.path +'/'+appDist;
-
+ 
+  var projectpath = params.path; 
   mkdir(projectpath, '0755');
   var files = fs.readdirSync(projectpath);
   if (files.indexOf('app') > -1 ) {
     console.log('path `' + projectpath + '` has create angular project');
     return false;
   }
-  mkpath(projectpath);
+  mkpath(projectpath +'/app');
   copyFiles(projectpath);
   console.log('Application create finished');
   
@@ -69,28 +67,32 @@ function copyFiles(projectpath){
     prefixPath + '/home/home.html',
     prefixPath + '/home/home.css',
     prefixPath + '/app.js',
+    prefixPath + '/index.html',
     prefixPath + '/jshintrc',
     prefixPath + '/gulpfile.js',
     prefixPath + '/bower.json',
-    prefixPath + '/index.html',
     prefixPath + '/package.json'
   ];
   var dstFiles = [
-    '/modules/home/home.js',
-    '/modules/home/home.html',
-    '/styles/home.css',
-    '/app.js',
-    '/.jshintrc',
-    '/gulpfile.js',
-    '/bower.json',
-    '/index.html',
-    '/package.json'
+    {path:'/modules/home/home.js',flag:true},
+    {path:'/modules/home/home.html',flag:true},
+    {path:'/styles/home.css',flag:true},
+    {path:'/app.js',flag:true},
+    {path:'/index.html',flag:true},
+    {path:'/.jshintrc',flag:false},
+    {path:'/gulpfile.js',flag:false},
+    {path:'/bower.json',flag:false},
+    {path:'/package.json',flag:false}
   ];
-  dstFiles.forEach(function(file, i) {
-    file = projectpath + file;
-
+  dstFiles.forEach(function(item, i) {
+    var file = "";
+    if(item.flag){
+      file = projectpath + '/app' + item.path;
+    }else{
+      file = projectpath + item.path;
+    }
     if (!isFile(file)) {
-      console.log(path.dirname(file))
+      
       mkdir(path.dirname(file), '0755');
       var buffer = fs.readFileSync(path.normalize(sourceFiles[i]));
       fs.writeFileSync(path.normalize(file), buffer);
