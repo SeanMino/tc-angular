@@ -2,7 +2,7 @@ var fs = require('fs');
 var child_process = require('child_process');
 var os = require('os');
 var path = require('path');
-var utils = require('./util.js');
+var utils = require('tc-utils');
 
 for(var name in utils){
   global[name] = utils[name];
