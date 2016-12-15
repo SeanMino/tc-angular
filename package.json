@@ -1,5 +1,5 @@
 {
-  "name": "tc_angular",
+  "name": "tc-angular",
   "version": "0.0.4",
   "description": "A command line for generate angular framewroks",
   "main": "index.js",

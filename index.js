@@ -12,99 +12,28 @@ for(var name in utils){
 var argvs = process.argv;
 var params = {};
 argvs.slice(2).forEach(function(arg){
-  switch(arg){
-    case '-h':
-    case '--help':
-      params.help = true;
-      break;
-    case '-v':
-    case '--version':
-      params.version = true;
-      break;
-    case '-s':
-    case '--silent':
-      params.silent = true;
-      break;
-    default:
-      if (arg.indexOf('-') !== 0) {
-        params.path = arg;
-      }
-      break;
+  if (arg.indexOf('-') !== 0) {
+    params.path = arg;
   }
 })
 
-if (params.version) {
-  var chars = [
-    " _______ _     _       _        _  _____ ",
-    "|__   __| |   (_)     | |      | |/ ____|",
-    "   | |  | |__  _ _ __ | | __   | | (___  ",
-    "   | |  | '_ \\| | '_ \\| |/ /   | |\\___ \\ ",
-    "   | |  | | | | | | | |   < |__| |____) |",
-    "   |_|  |_| |_|_|_| |_|_|\\_\\____/|_____/ ",
-    "                                         "                                       
-  ].join("\n");
-  
-  console.log(chars);
-  
-}else if (params.path) {
+if (params.path) {
   createProject();
-}else{
-  showHelp();
 }
 
-/**
- * [showHelp description]
- * @return {[type]} [description]
- */
-function showHelp(){
-  var data = [
-    '',
-    'Usage: thinkjs [options] <project-path>',
-    '',
-    'Options:',
-    '',
-    ' -h, --help          output usage information',
-    ' -v, --version       output thinkjs version',
-    " -s, --silent        create project, can't start service",
-    ''
-  ].join('\n  ');
-  console.log(data);
-}
-/**
- * 获取目录下的所有文件
- * @param  {[type]} dir    [description]
- * @param  {[type]} prefix [description]
- * @return {[type]}        [description]
- */
-function getFiles(dir, prefix){
-  if (!fs.existsSync(dir)) {
-    return [];
-  }
-  prefix = prefix || '';
-  var files = fs.readdirSync(dir);
-  var result = [];
-  files.forEach(function(item){
-    var stat = fs.statSync(dir + '/' + item);
-    if (stat.isFile()) {
-      result.push(prefix + item);
-    }else if(stat.isDirectory()){
-      result = result.concat(getFiles(path.normalize(dir + '/' + item),  path.normalize(prefix + '/' + item + '/')));
-    }
-  })
-  return result;
-}
+var appDist = 'app';
 
 /**
  * 创建项目
  * @return {[type]} [description]
  */
 function createProject(){
-  var projectpath = params.path;
+  var projectpath = params.path +'/'+appDist;
 
   mkdir(projectpath, '0755');
   var files = fs.readdirSync(projectpath);
-  if (files.indexOf('App') > -1 || files.indexOf('www') > -1) {
-    console.log('path `' + projectpath + '` is a thinkjs project');
+  if (files.indexOf('app') > -1 ) {
+    console.log('path `' + projectpath + '` has create angular project');
     return false;
   }
   mkpath(projectpath);
@@ -120,7 +49,7 @@ function createProject(){
  */
 function mkpath(projectpath){
   var paths = [
-    '/css',
+    '/styles',
     '/modules',
     '/image'
   ];
@@ -140,20 +69,26 @@ function copyFiles(projectpath){
     prefixPath + '/home/home.html',
     prefixPath + '/home/home.css',
     prefixPath + '/app.js',
+    prefixPath + '/jshintrc',
+    prefixPath + '/gulpfile.js',
+    prefixPath + '/bower.json',
     prefixPath + '/index.html',
     prefixPath + '/package.json'
   ];
   var dstFiles = [
     '/modules/home/home.js',
-    '/modules/home/home.js',
-    '/modules/home/home.js',
+    '/modules/home/home.html',
+    '/styles/home.css',
     '/app.js',
+    '/.jshintrc',
+    '/gulpfile.js',
+    '/bower.json',
     '/index.html',
     '/package.json'
   ];
   dstFiles.forEach(function(file, i) {
     file = projectpath + file;
-    console.log(path.dirname(file))
+
     if (!isFile(file)) {
       console.log(path.dirname(file))
       mkdir(path.dirname(file), '0755');

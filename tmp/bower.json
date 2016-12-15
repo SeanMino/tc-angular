@@ -1,0 +1,23 @@
+{
+  "name": "xianfeng2",
+  "authors": [
+    "laowang <123@qq.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "appPath":"app",
+  "dependencies": {
+    "angular": "^1.6.0",
+    "angular-ui-router": "^0.3.2",
+    "angular-css": "^1.0.8"
+  }
+}
