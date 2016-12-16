@@ -4,7 +4,7 @@
 
 angular.module('HomeModules',[])
 
-     .config(function($stateProvider,$urlRouterProvider){
+     .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
 
           $stateProvider.state('home',{
                url:'/home',
@@ -13,7 +13,7 @@ angular.module('HomeModules',[])
                css:'./modules/home/home.css'
           })
 
-     })
+     }])
 
     .filter('wang',function(){
         return function(ele){
@@ -25,15 +25,11 @@ angular.module('HomeModules',[])
          this.add = function(x,y){
               return x+y;
          }
-         this.getData = function(){
-            return $http.get('./data.json')
-         }
+         
     }])
 
      .controller('HomeCtrl',['$scope','MathService',function($scope,MathService){
           $scope.name = 'xiaowei';
           $scope.number = MathService.add;
-          MathService.getData().success(function(res){
-              $scope.arr = res;
-          })
+          
      }])
