@@ -8,4 +8,4 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRo
 
     $urlRouterProvider.otherwise('/home');
 
-})
+}])
